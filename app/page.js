@@ -1,103 +1,143 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+import {
+  Star,
+  Search,
+  Sun,
+  Clock,
+  Bell,
+  PanelLeftClose,
+  PanelLeft,
+  PanelRightClose,
+  PanelRight,
+} from "lucide-react";
+import EcommerceDashboard from "@/components/EcommerceDashboard";
+import OrderList from "@/components/OrderList";
+import RightSidebar from "@/components/RightSidebar";
+import LeftSidebar from "@/components/LeftSidebar";
+import { useTheme } from "@/components/theme-provider";
 
-export default function Home() {
+export default function Dashboard() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isRightbarOpen, setIsRightbarOpen] = useState(false);
+  const { toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+        setIsRightbarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+        setIsRightbarOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const toggleRightbar = () => {
+    setIsRightbarOpen(!isRightbarOpen);
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="flex h-screen bg-white dark:bg-[#1C1C1C] relative">
+      <LeftSidebar
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="flex-1 flex flex-col overflow-hidden lg:mb-0 mb-12">
+        <header className="h-16 bg-white dark:bg-[#1C1C1C] border-b border-gray-200 dark:border-[#282828]  flex items-center justify-between px-3 sm:px-6">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <button
+              onClick={toggleSidebar}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors"
+            >
+              {isSidebarOpen ? (
+                <PanelLeftClose className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              ) : (
+                <PanelLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              )}
+            </button>
+
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors hidden sm:block">
+              <Star className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+
+            <div className="hidden md:flex items-center gap-2 text-sm">
+              <span className="text-gray-400 dark:text-gray-500">
+                Dashboards
+              </span>
+              <span className="text-gray-400 dark:text-gray-500">/</span>
+              <span className="text-gray-900 dark:text-gray-100 font-medium">
+                Default
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 sm:gap-3">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-32 sm:w-48 md:w-64 pl-9 pr-3 sm:pl-10 sm:pr-12 py-2 bg-gray-50 dark:bg-[#282828]  border border-gray-200 dark:border-0 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              />
+              <Search className="w-4 h-4 text-gray-400 dark:text-gray-500 absolute left-2.5 sm:left-3 top-1/2 -translate-y-1/2" />
+              <span className="hidden sm:block absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 dark:text-gray-500">
+                ⌘/
+              </span>
+            </div>
+
+            <button
+              onClick={toggleTheme}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors cursor-pointer"
+              title="Toggle dark mode"
+            >
+              <Sun className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors">
+              <Clock className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors">
+              <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+            <button
+              onClick={toggleRightbar}
+              className="p-2 hover:bg-gray-100 dark:hover:bg-[#282828]  rounded-lg transition-colors"
+            >
+              {isRightbarOpen ? (
+                <PanelRightClose className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              ) : (
+                <PanelRight className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              )}
+            </button>
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto scrollbar-hide">
+          <EcommerceDashboard />
+          <OrderList />
+        </main>
+      </div>
+
+      <RightSidebar isOpen={isRightbarOpen} setIsOpen={setIsRightbarOpen} />
+
+      {(isSidebarOpen || isRightbarOpen) && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black/20 dark:bg-black/40 z-30"
+          onClick={() => {
+            setIsSidebarOpen(false);
+            setIsRightbarOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }
