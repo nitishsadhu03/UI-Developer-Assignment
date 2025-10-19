@@ -287,7 +287,7 @@ export default function EcommerceDashboard() {
           <h2 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-50 mb-4 sm:mb-6">
             Projections vs Actuals
           </h2>
-          <ChartContainer config={barChartConfig} className="h-48 sm:h-64">
+          <ChartContainer config={barChartConfig} className="h-48 sm:h-64 w-full">
             <BarChart data={projectionsData}>
               <CartesianGrid vertical={false} stroke="#374151" />
               <XAxis
