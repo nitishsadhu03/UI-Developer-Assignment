@@ -545,7 +545,13 @@ export default function OrderList() {
                                 className="fixed inset-0 z-10"
                                 onClick={() => setOpenMenuIndex(null)}
                               />
-                              <div className="absolute right-0 top-full mt-1 w-36 bg-white dark:bg-[#282828] border border-gray-200 dark:border-0 rounded-lg shadow-lg z-20 py-1">
+                              <div
+                                className={`absolute right-0 w-36 bg-white dark:bg-[#282828] border border-gray-200 dark:border-0 rounded-lg shadow-lg z-20 py-1 ${
+                                  index >= currentOrders.length - 2
+                                    ? "bottom-full mb-1"
+                                    : "top-full mt-1"
+                                }`}
+                              >
                                 <button
                                   onClick={() => handleEdit(order)}
                                   className="w-full px-4 py-2 text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1C1C1C] flex items-center gap-2 transition-colors cursor-pointer"
