@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# SaaS Dashboard (Juspay UI Developer Assignment)
 
-First, run the development server:
+A **pixel-perfect SaaS dashboard** built using **Next.js 15**, designed based on the provided Figma designs.  
+This implementation focuses on clean UI, smooth motion, responsive layouts, and delightful microinteractions — all crafted to deliver a professional, production-ready user experience.
+
+
+---
+
+
+## 🚀 Live Demo  
+🔗 [View Deployed Dashboard](https://ui-developer-assignment-eosin.vercel.app)
+
+
+---
+
+
+## 🎯 Objective  
+To implement the provided SaaS dashboard designs in React (Next.js) with **pixel-perfect accuracy**, smooth animations, and meaningful interactions.  
+The focus was on responsiveness, accessibility, and maintainable code aligned with modern frontend development standards.
+
+
+---
+
+
+## 🛠️ Tech Stack  
+
+| Category | Tools / Libraries |
+|-----------|-------------------|
+| **Framework** | [Next.js 15](https://nextjs.org/) |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) + [ShadCN UI](https://ui.shadcn.com/) |
+| **Charts** | [Recharts](https://recharts.org/en-US/) |
+| **Icons** | [Phosphor Icons](https://phosphoricons.com/), [Lucide React](https://lucide.dev/) |
+| **Deployment** | [Vercel](https://vercel.com/) |
+
+
+---
+
+
+## 💻 Features  
+
+✅ Pixel-perfect implementation based on Figma design  
+✅ Fully responsive across desktop, tablet, and mobile  
+✅ Functional searching and pagination  
+✅ Smooth animations and interactive UI states  
+✅ Dark and light theme toggle  
+✅ Reusable and modular component architecture  
+✅ Browser compatibility (Chrome, Firefox, Safari, Edge)  
+
+
+---
+
+
+## 📁 Folder Structure  
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+📦 UI-Developer-Assignment
+ ┣ 📂 app                 # Next.js 15 App Router structure
+ ┃ ┣ 📜 global.css        # Global Styles
+ ┃ ┣ 📜 loading.js        # Loading screen
+ ┃ ┣ 📜 page.js           # Main dashboard landing page
+ ┃ ┗ 📜 layout.js         # Root layout
+ ┣ 📂 components          # Reusable UI components
+ ┣ 📂 lib                 # Utility functions, constants, and helper files
+ ┣ 📂 public              # Static assets like images, icons, etc.
+ ┣ 📜 next.config.mjs     # Next.js configuration file
+ ┣ 📜 postcss.config.mjs   # PostCSS configuration
+ ┣ 📜 package.json        # Project dependencies and scripts
+ ┗ 📜 README.md           # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Setup and Installation  
 
-## Learn More
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/nitishsadhu03/UI-Developer-Assignment.git
+   cd UI-Developer-Assignment
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Run locally**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Build for production**
+
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build**
+
+   ```bash
+   npm start
+   ```
+
+
+---
+
+
+## 🧠 Design Decisions
+
+* **Next.js App Router** for structured, modern routing and server rendering.
+* **ShadCN UI + Tailwind CSS** for fast and consistent styling with clean class management.
+* **Recharts** for flexible and customizable chart visualizations.
+* **Icon Consistency** maintained through Lucide and Phosphor icons.
+* **No external state library:** local and prop-based state management kept simple and efficient.
+* **Responsive Design** using Tailwind’s grid and flex utilities to ensure cross-device consistency.
+
+
+---
+
+
+## ⚡ Challenges Faced
+
+* Issues in implementing **charts pixel-perfectly**, especially the pie chart.
+* Ensuring **smooth motion** without affecting rendering performance.
+* Implementing **dark/light themes** with consistent component behavior.
+* Fine-tuning **chart responsiveness** across screen sizes.
+
+
+---
+
+
+## 💎 Bonus Implementations
+
+* Implemented add/edit/delete order feature in the order list using local storage for data persistence and useState for state management.
+* Added full mobile responsiveness for all major breakpoints.
+* Light/Dark theme switch with preference saved in local storage.
+* Deployed and optimized production build on Vercel.
+
+
+---
+
+
+## 📜 License
+
+This project was developed as part of a **UI Developer assignment** for **Juspay**.
+All design assets and references belong to their respective owners.
